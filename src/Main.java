@@ -14,6 +14,8 @@ public class Main {
     private static void validateAge(int age) throws AgeLessThanZeroException {
         if (age < 0) {
             throw new AgeLessThanZeroException("Age cannot be negative!");
+        } else {
+            System.out.println("You can enter.");
         }
     }
 }
