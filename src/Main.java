@@ -1,19 +1,19 @@
+import java.util.Scanner;
+
 public class Main {
 
-    public static void main(String[] args) {
+    static Scanner keyboard = new Scanner(System.in);
 
-        int primitive = 100;
-         // boxing
+    public static void main(String[] args) throws AgeLessThanZeroException {
 
-       // Integer reference = Integer.valueOf(primitive);
+        System.out.print("Enter your age: ");
+        int yourAge = keyboard.nextInt();
+        validateAge(yourAge);
+    }
 
-        // unboxing
-
-       // int anotherPrimitive = reference.intValue();
-
-        //auto-boxing
-        Integer reference = primitive;
-        //auto-unboxing
-        int anotherPrimitive = reference;
+    private static void validateAge(int age) throws AgeLessThanZeroException {
+        if (age < 0) {
+            throw new AgeLessThanZeroException("Age cannot be negative!");
+        }
     }
 }
