@@ -1,21 +1,19 @@
-import java.util.Scanner;
+import java.util.function.Function;
 
 public class Main {
+    public static void main(String[] args) {
 
-    static Scanner keyboard = new Scanner(System.in);
+        Function<Integer, Boolean> isPositive = i -> i > 0;
+        Function<Integer, Boolean> isEvan = i -> i % 2 == 0;
+        Function<Integer, Boolean> isTwoDigit = i -> Math.abs(i) > 9 && Math.abs(i) < 100;
 
-    public static void main(String[] args) throws AgeLessThanZeroException {
+        printResult(isPositive, 4);
+        printResult(isEvan, 7);
+        printResult(isTwoDigit, 45);
 
-        System.out.print("Enter your age: ");
-        int yourAge = keyboard.nextInt();
-        validateAge(yourAge);
     }
 
-    private static void validateAge(int age) throws AgeLessThanZeroException {
-        if (age < 0) {
-            throw new AgeLessThanZeroException("Age cannot be negative!");
-        } else {
-            System.out.println("You can enter.");
-        }
+    public static void printResult(Function<Integer, Boolean> function, Integer num) {
+        System.out.println("Result: " + function.apply(num));
     }
 }
